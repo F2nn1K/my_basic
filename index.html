@@ -6,7 +6,7 @@
     <title>MY BASIC - Catálogo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --rose-lightest: #faf5f3;
@@ -32,7 +32,7 @@
         }
 
         body {
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--cream);
             color: var(--text-dark);
             overflow-x: hidden;
@@ -77,7 +77,7 @@
         }
 
         nav a {
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 13px;
             letter-spacing: 2.5px;
@@ -135,7 +135,7 @@
         }
 
         .hero-logo {
-            width: 220px;
+            width: 340px;
             margin-bottom: 40px;
             opacity: 0;
             animation: fadeUp 1s ease 0.3s forwards;
@@ -151,7 +151,7 @@
         }
 
         .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 300;
             font-size: clamp(28px, 4vw, 48px);
             color: var(--text-dark);
@@ -175,7 +175,7 @@
 
         .hero-cta {
             display: inline-block;
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 12px;
             letter-spacing: 3px;
@@ -212,7 +212,7 @@
         }
 
         .section-header h2 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 300;
             font-size: clamp(32px, 4vw, 52px);
             color: var(--text-dark);
@@ -238,7 +238,7 @@
         }
 
         .filter-btn {
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 12px;
             letter-spacing: 2px;
@@ -312,7 +312,7 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 10px;
             letter-spacing: 2px;
@@ -340,7 +340,7 @@
         }
 
         .btn-whatsapp {
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 11px;
             letter-spacing: 2px;
@@ -371,7 +371,7 @@
         }
 
         .product-name {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 500;
             font-size: 20px;
             color: var(--text-dark);
@@ -389,7 +389,7 @@
         }
 
         .product-price {
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 18px;
             color: var(--rose-dark);
@@ -400,6 +400,115 @@
             font-weight: 200;
             font-size: 12px;
             color: var(--text-light);
+        }
+
+        .product-variants {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .product-sizes {
+            display: flex;
+            gap: 5px;
+        }
+
+        .size-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 24px;
+            padding: 0 6px;
+            border: 1px solid rgba(201, 163, 150, 0.35);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text-medium);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .size-tag:hover {
+            border-color: var(--rose-medium);
+            color: var(--rose-dark);
+        }
+
+        .size-tag.active {
+            background: var(--text-dark);
+            color: var(--white);
+            border-color: var(--text-dark);
+        }
+
+        .size-tag.unique {
+            padding: 0 8px;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .product-colors {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            min-height: 18px;
+            flex-wrap: wrap;
+        }
+
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 163, 150, 0.3);
+            transition: all 0.25s ease;
+            cursor: default;
+            position: relative;
+        }
+
+        .color-dot:hover {
+            transform: scale(1.25);
+        }
+
+        .color-dot.unavailable {
+            opacity: 0.2;
+            transform: scale(0.8);
+        }
+
+        .color-dot.unavailable::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -1px;
+            right: -1px;
+            height: 1.5px;
+            background: var(--text-light);
+            transform: rotate(-45deg);
+        }
+
+        .color-dot[data-name]:hover::before {
+            content: attr(data-name);
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-dark);
+            color: var(--white);
+            font-size: 9px;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .color-dot.unavailable:hover::before {
+            content: attr(data-name) ' — esgotado';
         }
 
         /* ═══ BANNER ═══ */
@@ -433,7 +542,7 @@
         }
 
         .banner h3 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 300;
             font-size: clamp(24px, 3.5vw, 42px);
             color: var(--text-dark);
@@ -456,7 +565,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 12px;
             letter-spacing: 3px;
@@ -600,7 +709,7 @@
         }
 
         .modal-name {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 500;
             font-size: 28px;
             color: var(--text-dark);
@@ -627,7 +736,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            font-family: 'Jost', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 12px;
             letter-spacing: 2px;
@@ -639,6 +748,8 @@
             transition: all 0.3s ease;
             width: 100%;
             justify-content: center;
+            border: none;
+            cursor: pointer;
         }
 
         .modal-whatsapp:hover {
@@ -669,6 +780,313 @@
 
         .modal-close:hover {
             background: var(--white);
+        }
+
+        /* ═══ ORDER FORM MODAL ═══ */
+        .order-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(61, 46, 40, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .order-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .order-modal {
+            background: var(--white);
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .order-overlay.active .order-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .order-header {
+            padding: 28px 28px 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .order-product-thumb {
+            width: 70px;
+            height: 90px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .order-product-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .order-product-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .order-product-detail {
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .order-product-price {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--rose-dark);
+        }
+
+        .order-divider {
+            height: 1px;
+            background: var(--rose-light);
+            margin: 0 28px;
+        }
+
+        .order-form {
+            padding: 20px 28px 28px;
+        }
+
+        .order-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+
+        .order-sizes-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .order-size-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+            height: 32px;
+            padding: 0 10px;
+            border: 1px solid rgba(201, 163, 150, 0.35);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text-medium);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .order-size-tag:hover {
+            border-color: var(--rose-medium);
+        }
+
+        .order-size-tag.active {
+            background: var(--text-dark);
+            color: var(--white);
+            border-color: var(--text-dark);
+        }
+
+        .order-colors-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            min-height: 22px;
+        }
+
+        .order-color-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 163, 150, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .order-color-dot:hover {
+            transform: scale(1.15);
+        }
+
+        .order-color-dot.active {
+            border-color: var(--text-dark);
+            box-shadow: 0 0 0 2px var(--white), 0 0 0 3.5px var(--text-dark);
+        }
+
+        .order-color-dot.unavailable {
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .order-field {
+            margin-bottom: 14px;
+        }
+
+        .order-field label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            color: var(--text-medium);
+            margin-bottom: 6px;
+        }
+
+        .order-field input,
+        .order-field textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(201, 163, 150, 0.3);
+            background: var(--cream);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s ease;
+            border-radius: 0;
+        }
+
+        .order-field input:focus,
+        .order-field textarea:focus {
+            border-color: var(--rose-dark);
+        }
+
+        .order-field input.error,
+        .order-field textarea.error {
+            border-color: #c0392b;
+        }
+
+        .order-field textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .order-delivery-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .order-delivery-toggle input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--rose-dark);
+            cursor: pointer;
+        }
+
+        .order-delivery-toggle span {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: var(--text-medium);
+        }
+
+        .order-address-fields {
+            display: none;
+            margin-bottom: 4px;
+        }
+
+        .order-address-fields.visible {
+            display: block;
+        }
+
+        .order-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            background: #25d366;
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        .order-submit:hover {
+            background: #20bd5a;
+        }
+
+        .order-submit svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .order-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            background: rgba(250, 245, 243, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--text-medium);
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .order-close:hover {
+            color: var(--text-dark);
+        }
+
+        .order-error-msg {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: #c0392b;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .order-error-msg.visible {
+            display: block;
         }
 
         /* ═══ SCROLL TOP ═══ */
@@ -774,7 +1192,7 @@
             }
 
             .hero-logo {
-                width: 160px;
+                width: 260px;
             }
 
             .section-header {
@@ -802,9 +1220,20 @@
                 font-size: 15px;
             }
 
-            .product-details {
-                font-size: 10px;
-                margin-bottom: 8px;
+            .product-variants {
+                gap: 6px;
+                margin-bottom: 10px;
+            }
+
+            .size-tag {
+                min-width: 26px;
+                height: 22px;
+                font-size: 9px;
+            }
+
+            .color-dot {
+                width: 13px;
+                height: 13px;
             }
 
             .product-overlay {
@@ -873,7 +1302,7 @@
         <img src="img/logo/logo.jpeg" alt="MY BASIC" class="hero-logo">
         <div class="hero-divider"></div>
         <h1>Nova Coleção</h1>
-        <p>Elegância em cada detalhe</p>
+        <p>Clean - Essencial - Versatil<i class="baseline-sentiment_very_satisfied"></i></p>
         <a href="#colecao" class="hero-cta">Explorar Peças</a>
     </section>
 
@@ -899,7 +1328,7 @@
                         <img src="produtos/prod (1).jpeg" alt="Body Ombro Único Marrom" loading="lazy">
                         <span class="product-badge">Novo</span>
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -907,7 +1336,14 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Body Ombro Único</h3>
-                        <p class="product-details">Tam P, M, G</p>
+                        <div class="product-variants" data-variants='{"P":["Marrom","Preto"],"M":["Marrom","Preto"],"G":["Marrom","Preto"]}' data-colors='[{"name":"Marrom","hex":"#8B6355"},{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag" data-size="P">P</span>
+                                <span class="size-tag" data-size="M">M</span>
+                                <span class="size-tag" data-size="G">G</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 52,00</p>
                     </div>
                 </div>
@@ -916,7 +1352,7 @@
                     <div class="product-img">
                         <img src="produtos/prod (2).jpeg" alt="Body Gola Alta Marrom" loading="lazy">
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -924,7 +1360,12 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Body Frente Única</h3>
-                        <p class="product-details">Tam Único</p>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Marrom"]}' data-colors='[{"name":"Marrom","hex":"#8B6355"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 56,00</p>
                     </div>
                 </div>
@@ -934,7 +1375,7 @@
                         <img src="produtos/prod (3).jpeg" alt="Regata Alça Fina Branca" loading="lazy">
                         <span class="product-badge">Mais Vendida</span>
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -942,7 +1383,14 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Regata Alça Fina</h3>
-                        <p class="product-details">Tam P, M, G</p>
+                        <div class="product-variants" data-variants='{"P":["Branco","Off-White"],"M":["Branco","Off-White"],"G":["Branco","Off-White"]}' data-colors='[{"name":"Branco","hex":"#F5F5F0"},{"name":"Off-White","hex":"#F0E6D3"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag" data-size="P">P</span>
+                                <span class="size-tag" data-size="M">M</span>
+                                <span class="size-tag" data-size="G">G</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 52,00</p>
                     </div>
                 </div>
@@ -951,7 +1399,7 @@
                     <div class="product-img">
                         <img src="produtos/prod (4).jpeg" alt="Regata Alça Fina Off-White" loading="lazy">
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -959,75 +1407,14 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Regata Alça Fina</h3>
-                        <p class="product-details">Tam P, M, G · Off-White</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="body" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (5).jpeg" alt="Body Alça Fina Marrom" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
+                        <div class="product-variants" data-variants='{"P":["Off-White"],"M":["Off-White"],"G":["Off-White"]}' data-colors='[{"name":"Off-White","hex":"#F0E6D3"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag" data-size="P">P</span>
+                                <span class="size-tag" data-size="M">M</span>
+                                <span class="size-tag" data-size="G">G</span>
+                            </div>
+                            <div class="product-colors"></div>
                         </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Body Alça Fina</h3>
-                        <p class="product-details">Tam Único · Marrom</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="body" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (6).jpeg" alt="Body Alça Fina Cinza" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Body Alça Fina</h3>
-                        <p class="product-details">Tam Único · Cinza</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="body" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (7).jpeg" alt="Body Alça Fina Marrom" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Body Alça Fina</h3>
-                        <p class="product-details">Tam Único · Chocolate</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="body" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (8).jpeg" alt="Body Alça Fina Preto" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Body Alça Fina</h3>
-                        <p class="product-details">Tam Único · Preto</p>
                         <p class="product-price">R$ 52,00</p>
                     </div>
                 </div>
@@ -1036,7 +1423,7 @@
                     <div class="product-img">
                         <img src="produtos/prod (9).jpeg" alt="Body Alça Fina" loading="lazy">
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -1044,7 +1431,12 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Body Alça Fina</h3>
-                        <p class="product-details">Tam Único</p>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Marrom","Cinza","Chocolate","Preto"]}' data-colors='[{"name":"Marrom","hex":"#8B6355"},{"name":"Cinza","hex":"#A0A0A0"},{"name":"Chocolate","hex":"#5C3A2E"},{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 52,00</p>
                     </div>
                 </div>
@@ -1054,7 +1446,7 @@
                         <img src="produtos/prod (10).jpeg" alt="Regata Ombro Único Amarela" loading="lazy">
                         <span class="product-badge">Novo</span>
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -1062,92 +1454,14 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Regata Ombro Único</h3>
-                        <p class="product-details">Tam P, M, G · Amarelo</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="regata" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (11).jpeg" alt="Regata Ombro Único Bege" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
+                        <div class="product-variants" data-variants='{"P":["Amarelo","Bege","Vinho","Azul Marinho"],"M":["Amarelo","Bege","Vinho","Azul Marinho"],"G":["Amarelo","Bege","Vinho","Azul Marinho"]}' data-colors='[{"name":"Amarelo","hex":"#E8C94A"},{"name":"Bege","hex":"#D4C5A9"},{"name":"Vinho","hex":"#722F37"},{"name":"Azul Marinho","hex":"#1B2A4A"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag" data-size="P">P</span>
+                                <span class="size-tag" data-size="M">M</span>
+                                <span class="size-tag" data-size="G">G</span>
+                            </div>
+                            <div class="product-colors"></div>
                         </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Regata Ombro Único</h3>
-                        <p class="product-details">Tam P, M, G · Bege</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="regata" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (12).jpeg" alt="Regata Ombro Único Vinho" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Regata Ombro Único</h3>
-                        <p class="product-details">Tam P, M, G · Vinho</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="regata" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/prod (13).jpeg" alt="Regata Ombro Único Azul Marinho" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Regata Ombro Único</h3>
-                        <p class="product-details">Tam P, M, G · Azul Marinho</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="regata" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/Tam G 52.00.jpeg" alt="Regata Alça Fina Verde" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Regata Alça Fina</h3>
-                        <p class="product-details">Tam G · Verde Menta</p>
-                        <p class="product-price">R$ 52,00</p>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="regata" onclick="openModal(this)">
-                    <div class="product-img">
-                        <img src="produtos/Tam M 52.00.jpeg" alt="Regata Alça Fina Cinza" loading="lazy">
-                        <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                Pedir
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Regata Alça Fina</h3>
-                        <p class="product-details">Tam M · Cinza</p>
                         <p class="product-price">R$ 52,00</p>
                     </div>
                 </div>
@@ -1156,7 +1470,7 @@
                     <div class="product-img">
                         <img src="produtos/Tam P52.00 nome Regata Alça Fina.jpeg" alt="Regata Alça Fina" loading="lazy">
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -1164,7 +1478,14 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Regata Alça Fina</h3>
-                        <p class="product-details">Tam P</p>
+                        <div class="product-variants" data-variants='{"P":["Branco","Cinza","Verde Menta"],"M":["Branco","Cinza"],"G":["Branco","Verde Menta"]}' data-colors='[{"name":"Branco","hex":"#F5F5F0"},{"name":"Cinza","hex":"#A0A0A0"},{"name":"Verde Menta","hex":"#98D4AA"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag" data-size="P">P</span>
+                                <span class="size-tag" data-size="M">M</span>
+                                <span class="size-tag" data-size="G">G</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 52,00</p>
                     </div>
                 </div>
@@ -1173,7 +1494,7 @@
                     <div class="product-img">
                         <img src="produtos/Tam único 45.00 nome Regata Nadador.jpeg" alt="Regata Nadador" loading="lazy">
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -1181,7 +1502,12 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Regata Nadador</h3>
-                        <p class="product-details">Tam Único</p>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Preto"]}' data-colors='[{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 45,00</p>
                     </div>
                 </div>
@@ -1191,7 +1517,7 @@
                         <img src="produtos/Tam único 56.00 nome Regata Frente Única.jpeg" alt="Regata Frente Única" loading="lazy">
                         <span class="product-badge">Destaque</span>
                         <div class="product-overlay">
-                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation()">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                                 Pedir
                             </a>
@@ -1199,7 +1525,12 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Regata Frente Única</h3>
-                        <p class="product-details">Tam Único</p>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Preto"]}' data-colors='[{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
                         <p class="product-price">R$ 56,00</p>
                     </div>
                 </div>
@@ -1245,13 +1576,77 @@
             <img class="modal-img" id="modalImg" src="" alt="">
             <div class="modal-body">
                 <h3 class="modal-name" id="modalName"></h3>
-                <p class="modal-details" id="modalDetails"></p>
+                <div class="product-variants" id="modalVariants"></div>
                 <p class="modal-price" id="modalPrice"></p>
-                <a href="#" class="modal-whatsapp" id="modalWhatsapp" target="_blank">
+                <button type="button" class="modal-whatsapp" id="modalWhatsapp" onclick="openOrderFromModal()">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                     Pedir pelo WhatsApp
-                </a>
+                </button>
             </div>
+        </div>
+    </div>
+
+    <!-- ORDER FORM MODAL -->
+    <div class="order-overlay" id="orderOverlay">
+        <div class="order-modal">
+            <button class="order-close" onclick="closeOrder()">&times;</button>
+
+            <div class="order-header">
+                <img class="order-product-thumb" id="orderThumb" src="" alt="">
+                <div class="order-product-info">
+                    <p class="order-product-name" id="orderProdName"></p>
+                    <p class="order-product-detail" id="orderProdDetail"></p>
+                    <p class="order-product-price" id="orderProdPrice"></p>
+                </div>
+            </div>
+
+            <div class="order-divider"></div>
+
+            <form class="order-form" id="orderForm" onsubmit="return false;">
+                <p class="order-section-title">Escolha o tamanho</p>
+                <div class="order-sizes-row" id="orderSizes"></div>
+
+                <p class="order-section-title">Escolha a cor</p>
+                <div class="order-colors-row" id="orderColors"></div>
+
+                <div class="order-divider" style="margin:0 0 20px 0;"></div>
+
+                <p class="order-section-title">Seus dados</p>
+
+                <div class="order-field">
+                    <label for="orderName">Nome completo *</label>
+                    <input type="text" id="orderName" placeholder="Seu nome completo" required>
+                </div>
+
+                <div class="order-field">
+                    <label for="orderPhone">Telefone / WhatsApp *</label>
+                    <input type="tel" id="orderPhone" placeholder="(00) 00000-0000" required>
+                </div>
+
+                <label class="order-delivery-toggle">
+                    <input type="checkbox" id="orderDeliveryCheck">
+                    <span>Preciso de entrega</span>
+                </label>
+
+                <div class="order-address-fields" id="orderAddressFields">
+                    <div class="order-field">
+                        <label for="orderAddress">Endereço completo *</label>
+                        <textarea id="orderAddress" placeholder="Rua, número, bairro, cidade..."></textarea>
+                    </div>
+                </div>
+
+                <div class="order-field">
+                    <label for="orderObs">Observações (opcional)</label>
+                    <input type="text" id="orderObs" placeholder="Alguma observação sobre o pedido?">
+                </div>
+
+                <p class="order-error-msg" id="orderError">Preencha todos os campos obrigatórios e selecione tamanho e cor.</p>
+
+                <button type="button" class="order-submit" onclick="submitOrder()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                    Enviar Pedido
+                </button>
+            </form>
         </div>
     </div>
 
@@ -1317,19 +1712,78 @@
 
         cards.forEach(card => observer.observe(card));
 
+        function initVariants(container) {
+            const variantsEl = container.querySelector('.product-variants');
+            if (!variantsEl || !variantsEl.dataset.variants) return;
+
+            const variantsMap = JSON.parse(variantsEl.dataset.variants);
+            const allColors = JSON.parse(variantsEl.dataset.colors);
+            const colorsContainer = variantsEl.querySelector('.product-colors');
+            const sizeTags = variantsEl.querySelectorAll('.size-tag');
+
+            function renderColors(selectedSize) {
+                const available = selectedSize ? (variantsMap[selectedSize] || []) : [];
+                colorsContainer.innerHTML = '';
+                allColors.forEach(c => {
+                    const dot = document.createElement('span');
+                    dot.className = 'color-dot';
+                    dot.style.background = c.hex;
+                    dot.setAttribute('data-name', c.name);
+                    if (selectedSize && !available.includes(c.name)) {
+                        dot.classList.add('unavailable');
+                    }
+                    colorsContainer.appendChild(dot);
+                });
+            }
+
+            sizeTags.forEach(tag => {
+                tag.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const wasActive = tag.classList.contains('active');
+                    sizeTags.forEach(t => t.classList.remove('active'));
+                    if (!wasActive) {
+                        tag.classList.add('active');
+                        renderColors(tag.dataset.size);
+                    } else {
+                        renderColors(null);
+                    }
+                });
+            });
+
+            renderColors(null);
+        }
+
+        document.querySelectorAll('.product-card').forEach(card => initVariants(card));
+
+        let currentOrderData = {};
+
         function openModal(card) {
             const img = card.querySelector('.product-img img').src;
             const name = card.querySelector('.product-name').textContent;
-            const details = card.querySelector('.product-details').textContent;
             const price = card.querySelector('.product-price').textContent;
+            const variantsEl = card.querySelector('.product-variants');
 
             document.getElementById('modalImg').src = img;
             document.getElementById('modalName').textContent = name;
-            document.getElementById('modalDetails').textContent = details;
             document.getElementById('modalPrice').textContent = price;
 
-            const msg = encodeURIComponent(`Olá! Tenho interesse na peça: ${name} (${details}) - ${price}`);
-            document.getElementById('modalWhatsapp').href = `https://wa.me/5547999476241?text=${msg}`;
+            const modalVariants = document.getElementById('modalVariants');
+            if (variantsEl && variantsEl.dataset.variants) {
+                const clone = variantsEl.cloneNode(true);
+                modalVariants.innerHTML = '';
+                modalVariants.appendChild(clone);
+                initVariants(modalVariants);
+            } else {
+                modalVariants.innerHTML = '';
+            }
+
+            currentOrderData = {
+                img: img,
+                name: name,
+                price: price,
+                variants: variantsEl ? variantsEl.dataset.variants : '{}',
+                colors: variantsEl ? variantsEl.dataset.colors : '[]'
+            };
 
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1344,8 +1798,205 @@
             if (e.target === modalOverlay) closeModal();
         });
 
+        function openOrderFromModal() {
+            closeModal();
+            setTimeout(() => openOrderForm(currentOrderData), 150);
+        }
+
+        function openOrderFromCard(btn) {
+            const card = btn.closest('.product-card');
+            const img = card.querySelector('.product-img img').src;
+            const name = card.querySelector('.product-name').textContent;
+            const price = card.querySelector('.product-price').textContent;
+            const variantsEl = card.querySelector('.product-variants');
+
+            openOrderForm({
+                img: img,
+                name: name,
+                price: price,
+                variants: variantsEl ? variantsEl.dataset.variants : '{}',
+                colors: variantsEl ? variantsEl.dataset.colors : '[]'
+            });
+        }
+
+        const orderOverlay = document.getElementById('orderOverlay');
+        const orderDeliveryCheck = document.getElementById('orderDeliveryCheck');
+        const orderAddressFields = document.getElementById('orderAddressFields');
+
+        orderDeliveryCheck.addEventListener('change', () => {
+            orderAddressFields.classList.toggle('visible', orderDeliveryCheck.checked);
+        });
+
+        let orderVariantsMap = {};
+        let orderAllColors = [];
+        let orderSelectedSize = null;
+        let orderSelectedColor = null;
+
+        function openOrderForm(data) {
+            document.getElementById('orderThumb').src = data.img;
+            document.getElementById('orderProdName').textContent = data.name;
+            document.getElementById('orderProdPrice').textContent = data.price;
+
+            orderVariantsMap = JSON.parse(data.variants);
+            orderAllColors = JSON.parse(data.colors);
+            orderSelectedSize = null;
+            orderSelectedColor = null;
+
+            const sizesContainer = document.getElementById('orderSizes');
+            const colorsContainer = document.getElementById('orderColors');
+            sizesContainer.innerHTML = '';
+            colorsContainer.innerHTML = '';
+
+            const sizeKeys = Object.keys(orderVariantsMap);
+            sizeKeys.forEach(size => {
+                const tag = document.createElement('span');
+                tag.className = 'order-size-tag';
+                if (size === 'ÚNICO') tag.classList.add('unique');
+                tag.textContent = size;
+                tag.dataset.size = size;
+                tag.addEventListener('click', () => selectOrderSize(tag));
+                sizesContainer.appendChild(tag);
+            });
+
+            if (sizeKeys.length === 1) {
+                sizesContainer.querySelector('.order-size-tag').click();
+            } else {
+                renderOrderColors(null);
+            }
+
+            document.getElementById('orderProdDetail').textContent = '';
+            document.getElementById('orderName').value = '';
+            document.getElementById('orderPhone').value = '';
+            document.getElementById('orderAddress').value = '';
+            document.getElementById('orderObs').value = '';
+            orderDeliveryCheck.checked = false;
+            orderAddressFields.classList.remove('visible');
+            document.getElementById('orderError').classList.remove('visible');
+            document.querySelectorAll('.order-field input, .order-field textarea').forEach(f => f.classList.remove('error'));
+
+            orderOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function selectOrderSize(tag) {
+            document.querySelectorAll('#orderSizes .order-size-tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            orderSelectedSize = tag.dataset.size;
+            orderSelectedColor = null;
+            renderOrderColors(orderSelectedSize);
+            updateOrderDetail();
+        }
+
+        function renderOrderColors(size) {
+            const container = document.getElementById('orderColors');
+            container.innerHTML = '';
+            const available = size ? (orderVariantsMap[size] || []) : [];
+
+            orderAllColors.forEach(c => {
+                const dot = document.createElement('span');
+                dot.className = 'order-color-dot';
+                dot.style.background = c.hex;
+                dot.title = c.name;
+                dot.dataset.color = c.name;
+
+                if (size && !available.includes(c.name)) {
+                    dot.classList.add('unavailable');
+                } else {
+                    dot.addEventListener('click', () => selectOrderColor(dot));
+                }
+
+                container.appendChild(dot);
+            });
+
+            if (orderAllColors.length === 1 && (!size || available.length === 1)) {
+                const firstDot = container.querySelector('.order-color-dot:not(.unavailable)');
+                if (firstDot) firstDot.click();
+            }
+        }
+
+        function selectOrderColor(dot) {
+            document.querySelectorAll('#orderColors .order-color-dot').forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            orderSelectedColor = dot.dataset.color;
+            updateOrderDetail();
+        }
+
+        function updateOrderDetail() {
+            const parts = [];
+            if (orderSelectedSize) parts.push('Tam ' + orderSelectedSize);
+            if (orderSelectedColor) parts.push(orderSelectedColor);
+            document.getElementById('orderProdDetail').textContent = parts.join(' · ');
+        }
+
+        function closeOrder() {
+            orderOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        orderOverlay.addEventListener('click', (e) => {
+            if (e.target === orderOverlay) closeOrder();
+        });
+
+        function submitOrder() {
+            const name = document.getElementById('orderName').value.trim();
+            const phone = document.getElementById('orderPhone').value.trim();
+            const needsDelivery = orderDeliveryCheck.checked;
+            const address = document.getElementById('orderAddress').value.trim();
+            const obs = document.getElementById('orderObs').value.trim();
+            const errorEl = document.getElementById('orderError');
+
+            document.querySelectorAll('.order-field input, .order-field textarea').forEach(f => f.classList.remove('error'));
+            errorEl.classList.remove('visible');
+
+            let hasError = false;
+            if (!name) { document.getElementById('orderName').classList.add('error'); hasError = true; }
+            if (!phone) { document.getElementById('orderPhone').classList.add('error'); hasError = true; }
+            if (needsDelivery && !address) { document.getElementById('orderAddress').classList.add('error'); hasError = true; }
+            if (!orderSelectedSize || !orderSelectedColor) { hasError = true; }
+
+            if (hasError) {
+                errorEl.classList.add('visible');
+                return;
+            }
+
+            const prodName = document.getElementById('orderProdName').textContent;
+            const prodPrice = document.getElementById('orderProdPrice').textContent;
+
+            let msg = `*NOVO PEDIDO - MY BASIC*\n\n`;
+            msg += `*Produto:* ${prodName}\n`;
+            msg += `*Tamanho:* ${orderSelectedSize}\n`;
+            msg += `*Cor:* ${orderSelectedColor}\n`;
+            msg += `*Valor:* ${prodPrice}\n\n`;
+            msg += `*--- Dados do Cliente ---*\n`;
+            msg += `*Nome:* ${name}\n`;
+            msg += `*Telefone:* ${phone}\n`;
+            if (needsDelivery) {
+                msg += `*Entrega:* Sim\n`;
+                msg += `*Endereço:* ${address}\n`;
+            } else {
+                msg += `*Entrega:* Retirar no local\n`;
+            }
+            if (obs) msg += `*Obs:* ${obs}\n`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/5547999476241?text=${encoded}`, '_blank');
+            closeOrder();
+        }
+
+        document.getElementById('orderPhone').addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+            else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+            else if (v.length > 0) v = `(${v}`;
+            e.target.value = v;
+        });
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape') {
+                if (orderOverlay.classList.contains('active')) closeOrder();
+                else if (modalOverlay.classList.contains('active')) closeModal();
+            }
         });
     </script>
 </body>
