@@ -290,7 +290,7 @@
             transform: translateY(-4px);
         }
 
-        .product-card:hover .product-img img {
+        .product-card:hover .product-img .carousel-img.active {
             transform: scale(1.05);
         }
 
@@ -308,37 +308,49 @@
             transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Miniaturas de galeria no card */
-        .card-thumbs {
+        /* Imagens do carrossel: só a primeira visível */
+        .product-img .carousel-img {
             position: absolute;
-            bottom: 56px;
-            right: 10px;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .product-img .carousel-img.active {
+            opacity: 1;
+        }
+
+        /* Indicadores do carrossel */
+        .carousel-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
             gap: 5px;
             z-index: 5;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .product-card:hover .card-thumbs {
+        .product-card:hover .carousel-dots {
             opacity: 1;
         }
 
-        .card-thumb {
-            width: 38px;
-            height: 50px;
-            object-fit: cover;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: border-color 0.2s ease, opacity 0.2s ease;
-            opacity: 0.75;
+        .carousel-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        .card-thumb:hover,
-        .card-thumb.active {
-            border-color: var(--white);
-            opacity: 1;
+        .carousel-dot.active {
+            background: var(--white);
+            transform: scale(1.3);
         }
 
         /* Galeria no modal */
@@ -1624,12 +1636,6 @@
                     <div class="product-img">
                         <img src="produtos/produtos novos/prod novo.jpeg" alt="Regata Ombro Único Azul Marinho" loading="lazy">
                         <span class="product-badge">Novo</span>
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/prod novo.jpeg" alt="azul frente" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 1.jpeg" alt="azul detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 2.jpeg" alt="vinho detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 2 (1).jpeg" alt="vinho frente" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1655,10 +1661,6 @@
                      onclick="openModal(this)">
                     <div class="product-img">
                         <img src="produtos/produtos novos/prod novo 2.jpeg" alt="Regata Ombro Único Vinho" loading="lazy">
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/prod novo 2.jpeg" alt="detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 2 (1).jpeg" alt="frente" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1684,10 +1686,6 @@
                      onclick="openModal(this)">
                     <div class="product-img">
                         <img src="produtos/produtos novos/Regata Ombro único TAM único (50,00).jpeg" alt="Regata Ombro Único Preto" loading="lazy">
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/Regata Ombro único TAM único (50,00).jpeg" alt="frente" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata Ombro único TAM único (50,00)(1).jpeg" alt="detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1714,12 +1712,6 @@
                     <div class="product-img">
                         <img src="produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (1).jpeg" alt="Regata Ombro Único Suplex Branco" loading="lazy">
                         <span class="product-badge">Destaque</span>
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (1).jpeg" alt="branco" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (3).jpeg" alt="preto" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata ombro único - Suplex TAM M (65,60) (1).jpeg" alt="marrom" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata ombro único - Suplex TAM P (65,60) (1).jpeg" alt="vermelho" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1749,11 +1741,6 @@
                      onclick="openModal(this)">
                     <div class="product-img">
                         <img src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (1).jpeg" alt="Regata Frente Única Halter Preto" loading="lazy">
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (1).jpeg" alt="preto frente" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (4).jpeg" alt="preto costas" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (2).jpeg" alt="branco costas" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1780,12 +1767,6 @@
                     <div class="product-img">
                         <img src="produtos/produtos novos/Regata Brasil Tam único (64,00).jpeg" alt="Regata Brasil Canelada Verde" loading="lazy">
                         <span class="product-badge">Novo</span>
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/Regata Brasil Tam único (64,00).jpeg" alt="verde" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata Brasil Tam único (64,00) (1).jpeg" alt="azul" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (3).jpeg" alt="preta" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (5).jpeg" alt="amarela" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1811,11 +1792,6 @@
                      onclick="openModal(this)">
                     <div class="product-img">
                         <img src="produtos/produtos novos/Regata Básica Tam único (52,00) (1).jpeg" alt="Regata Básica Nadador Vinho" loading="lazy">
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/Regata Básica Tam único (52,00) (1).jpeg" alt="vinho" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata Básica Tam único (52,00) (2).jpeg" alt="preto" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata Básica Tam único (52,00) (3).jpeg" alt="rosa" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1842,10 +1818,6 @@
                     <div class="product-img">
                         <img src="produtos/produtos novos/Regata Hit TAM único (68,00) (1).jpeg" alt="Regata Hit Brasil Off-White" loading="lazy">
                         <span class="product-badge">Novo</span>
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/Regata Hit TAM único (68,00) (1).jpeg" alt="off-white" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/Regata Hit TAM único (68,00) (2).jpeg" alt="preto" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -1897,10 +1869,6 @@
                     <div class="product-img">
                         <img src="produtos/produtos novos/T - Shirt Brasil Tam único (76,50).jpeg" alt="T-Shirt Brasil Girls - Frente" loading="lazy">
                         <span class="product-badge">Novo</span>
-                        <div class="card-thumbs">
-                            <img class="card-thumb active" src="produtos/produtos novos/T - Shirt Brasil Tam único (76,50).jpeg" alt="frente" onclick="event.stopPropagation(); switchCardImg(this)">
-                            <img class="card-thumb" src="produtos/produtos novos/T - Shirt Brasil Tam único (76,50) (1).jpeg" alt="costas" onclick="event.stopPropagation(); switchCardImg(this)">
-                        </div>
                         <div class="product-overlay">
                             <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -2141,7 +2109,10 @@
             renderColors(null);
         }
 
-        document.querySelectorAll('.product-card').forEach(card => initVariants(card));
+        document.querySelectorAll('.product-card').forEach(card => {
+            initVariants(card);
+            initCarousel(card);
+        });
 
         let currentOrderData = {};
 
@@ -2210,6 +2181,63 @@
             mainImg.src = thumb.src;
             productImg.querySelectorAll('.card-thumb').forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
+        }
+
+        /* ─── CARROSSEL AUTOMÁTICO NOS CARDS ─── */
+        function initCarousel(card) {
+            const images = card.dataset.images ? JSON.parse(card.dataset.images) : null;
+            if (!images || images.length < 2) return;
+
+            const productImg = card.querySelector('.product-img');
+
+            /* Substitui a img original por imagens em camadas absolutas */
+            const firstImg = productImg.querySelector('img');
+            firstImg.classList.add('carousel-img', 'active');
+
+            images.slice(1).forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'carousel-img';
+                img.loading = 'lazy';
+                productImg.insertBefore(img, firstImg.nextSibling);
+            });
+
+            /* Pontos indicadores */
+            const dots = document.createElement('div');
+            dots.className = 'carousel-dots';
+            images.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dots.appendChild(dot);
+            });
+            productImg.appendChild(dots);
+
+            let idx = 0;
+            let timer = null;
+            const allImgs = productImg.querySelectorAll('.carousel-img');
+            const allDots = dots.querySelectorAll('.carousel-dot');
+
+            function goTo(n) {
+                allImgs[idx].classList.remove('active');
+                allDots[idx].classList.remove('active');
+                idx = (n + images.length) % images.length;
+                allImgs[idx].classList.add('active');
+                allDots[idx].classList.add('active');
+            }
+
+            card.addEventListener('mouseenter', () => {
+                timer = setInterval(() => goTo(idx + 1), 1500);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                clearInterval(timer);
+                /* Volta para a primeira imagem suavemente */
+                allImgs[idx].classList.remove('active');
+                allDots[idx].classList.remove('active');
+                idx = 0;
+                allImgs[0].classList.add('active');
+                allDots[0].classList.add('active');
+            });
         }
 
         function closeModal() {
