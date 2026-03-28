@@ -308,6 +308,82 @@
             transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        /* Miniaturas de galeria no card */
+        .card-thumbs {
+            position: absolute;
+            bottom: 56px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .card-thumbs {
+            opacity: 1;
+        }
+
+        .card-thumb {
+            width: 38px;
+            height: 50px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.2s ease, opacity 0.2s ease;
+            opacity: 0.75;
+        }
+
+        .card-thumb:hover,
+        .card-thumb.active {
+            border-color: var(--white);
+            opacity: 1;
+        }
+
+        /* Galeria no modal */
+        .modal-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .modal-main-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-thumbs {
+            display: flex;
+            gap: 6px;
+            padding: 10px 12px;
+            background: var(--rose-lightest);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .modal-thumbs::-webkit-scrollbar { display: none; }
+
+        .modal-thumb {
+            width: 56px;
+            height: 72px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+            opacity: 0.65;
+            transition: border-color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .modal-thumb:hover,
+        .modal-thumb.active {
+            border-color: var(--rose-dark);
+            opacity: 1;
+        }
+
         .product-badge {
             position: absolute;
             top: 16px;
@@ -702,6 +778,10 @@
             width: 100%;
             aspect-ratio: 3/4;
             object-fit: cover;
+        }
+
+        .modal-gallery {
+            flex-shrink: 0;
         }
 
         .modal-body {
@@ -1317,6 +1397,7 @@
         <div class="filter-bar">
             <button class="filter-btn active" data-filter="all">Todas</button>
             <button class="filter-btn" data-filter="regata">Regatas</button>
+            <button class="filter-btn" data-filter="tshirt">T-Shirts</button>
         </div>
 
         <div class="products">
@@ -1534,6 +1615,311 @@
                     </div>
                 </div>
 
+                <!-- NOVOS PRODUTOS -->
+
+                <!-- Regata Ombro Único Canalé - 4 fotos (azul marinho e vinho) -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/prod novo.jpeg","produtos/produtos novos/prod novo 1.jpeg","produtos/produtos novos/prod novo 2.jpeg","produtos/produtos novos/prod novo 2 (1).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/prod novo.jpeg" alt="Regata Ombro Único Azul Marinho" loading="lazy">
+                        <span class="product-badge">Novo</span>
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/prod novo.jpeg" alt="azul frente" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 1.jpeg" alt="azul detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 2.jpeg" alt="vinho detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 2 (1).jpeg" alt="vinho frente" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Ombro Único</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Azul Marinho","Vinho"]}' data-colors='[{"name":"Azul Marinho","hex":"#1B2A4A"},{"name":"Vinho","hex":"#722F37"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 50,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Ombro Único Vinho - 2 fotos -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/prod novo 2.jpeg","produtos/produtos novos/prod novo 2 (1).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/prod novo 2.jpeg" alt="Regata Ombro Único Vinho" loading="lazy">
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/prod novo 2.jpeg" alt="detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 2 (1).jpeg" alt="frente" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Ombro Único Canalé</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Vinho"]}' data-colors='[{"name":"Vinho","hex":"#722F37"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 50,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Ombro Único Preto - 2 fotos -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/Regata Ombro único TAM único (50,00).jpeg","produtos/produtos novos/Regata Ombro único TAM único (50,00)(1).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/Regata Ombro único TAM único (50,00).jpeg" alt="Regata Ombro Único Preto" loading="lazy">
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/Regata Ombro único TAM único (50,00).jpeg" alt="frente" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata Ombro único TAM único (50,00)(1).jpeg" alt="detalhe" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Ombro Único</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Preto"]}' data-colors='[{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 50,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Ombro Único Suplex P/M/G - 6 fotos (P vermelho frente+costas, M marrom frente+detalhe, G branco frente+detalhe / G preto frente+body) -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (1).jpeg","produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (2).jpeg","produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (3).jpeg","produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (4).jpeg","produtos/produtos novos/Regata ombro único - Suplex TAM M (65,60) (1).jpeg","produtos/produtos novos/Regata ombro único - Suplex TAM M (65,60) (2).jpeg","produtos/produtos novos/Regata ombro único - Suplex TAM P (65,60) (1).jpeg","produtos/produtos novos/Regata ombro único - Suplex TAM P (65,60) (2).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (1).jpeg" alt="Regata Ombro Único Suplex Branco" loading="lazy">
+                        <span class="product-badge">Destaque</span>
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (1).jpeg" alt="branco" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata Ombro único - Suplex TAM G (65,60) (3).jpeg" alt="preto" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata ombro único - Suplex TAM M (65,60) (1).jpeg" alt="marrom" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata ombro único - Suplex TAM P (65,60) (1).jpeg" alt="vermelho" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Ombro Único Suplex</h3>
+                        <div class="product-variants"
+                             data-variants='{"P":["Vermelho"],"M":["Marrom"],"G":["Branco","Preto"]}'
+                             data-colors='[{"name":"Vermelho","hex":"#C0392B"},{"name":"Marrom","hex":"#5C3A2E"},{"name":"Branco","hex":"#F5F5F0"},{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag" data-size="P">P</span>
+                                <span class="size-tag" data-size="M">M</span>
+                                <span class="size-tag" data-size="G">G</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 65,60</p>
+                    </div>
+                </div>
+
+                <!-- Regata Frente Única Halter - 2 fotos (preto frente/costas + branco frente/costas) -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/prod novo 3 4 5 6 e 7 (1).jpeg","produtos/produtos novos/prod novo 3 4 5 6 e 7 (2).jpeg","produtos/produtos novos/prod novo 3 4 5 6 e 7 (4).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (1).jpeg" alt="Regata Frente Única Halter Preto" loading="lazy">
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (1).jpeg" alt="preto frente" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (4).jpeg" alt="preto costas" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (2).jpeg" alt="branco costas" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Frente Única Halter</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Preto","Off-White"]}' data-colors='[{"name":"Preto","hex":"#2C2C2C"},{"name":"Off-White","hex":"#F0E6D3"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 56,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Brasil Canelada - 4 cores (verde, azul, preta, amarela) -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/Regata Brasil Tam único (64,00).jpeg","produtos/produtos novos/Regata Brasil Tam único (64,00) (1).jpeg","produtos/produtos novos/prod novo 3 4 5 6 e 7 (3).jpeg","produtos/produtos novos/prod novo 3 4 5 6 e 7 (5).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/Regata Brasil Tam único (64,00).jpeg" alt="Regata Brasil Canelada Verde" loading="lazy">
+                        <span class="product-badge">Novo</span>
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/Regata Brasil Tam único (64,00).jpeg" alt="verde" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata Brasil Tam único (64,00) (1).jpeg" alt="azul" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (3).jpeg" alt="preta" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/prod novo 3 4 5 6 e 7 (5).jpeg" alt="amarela" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Brasil Canelada</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Verde","Azul","Preto","Amarelo"]}' data-colors='[{"name":"Verde","hex":"#2E8B57"},{"name":"Azul","hex":"#2B6CB0"},{"name":"Preto","hex":"#2C2C2C"},{"name":"Amarelo","hex":"#E8C94A"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 64,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Básica Nadador - 3 fotos (vinho, preto, rosa) -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/Regata Básica Tam único (52,00) (1).jpeg","produtos/produtos novos/Regata Básica Tam único (52,00) (2).jpeg","produtos/produtos novos/Regata Básica Tam único (52,00) (3).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/Regata Básica Tam único (52,00) (1).jpeg" alt="Regata Básica Nadador Vinho" loading="lazy">
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/Regata Básica Tam único (52,00) (1).jpeg" alt="vinho" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata Básica Tam único (52,00) (2).jpeg" alt="preto" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata Básica Tam único (52,00) (3).jpeg" alt="rosa" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Básica Nadador</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Vinho","Preto","Rosa"]}' data-colors='[{"name":"Vinho","hex":"#722F37"},{"name":"Preto","hex":"#2C2C2C"},{"name":"Rosa","hex":"#F4C2C2"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 52,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Hit Brasil - 2 fotos (off-white e preto) -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/Regata Hit TAM único (68,00) (1).jpeg","produtos/produtos novos/Regata Hit TAM único (68,00) (2).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/Regata Hit TAM único (68,00) (1).jpeg" alt="Regata Hit Brasil Off-White" loading="lazy">
+                        <span class="product-badge">Novo</span>
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/Regata Hit TAM único (68,00) (1).jpeg" alt="off-white" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/Regata Hit TAM único (68,00) (2).jpeg" alt="preto" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Hit Brasil</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Off-White","Preto"]}' data-colors='[{"name":"Off-White","hex":"#F5F0E8"},{"name":"Preto","hex":"#2C2C2C"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 68,00</p>
+                    </div>
+                </div>
+
+                <!-- Regata Frente Única Off-White Halter - 1 foto -->
+                <div class="product-card" data-category="regata"
+                     data-images='["produtos/produtos novos/Regata frente única Tam único (56,00).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/Regata frente única Tam único (56,00).jpeg" alt="Regata Frente Única Off-White" loading="lazy">
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regata Frente Única</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Off-White"]}' data-colors='[{"name":"Off-White","hex":"#F5F0E8"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 56,00</p>
+                    </div>
+                </div>
+
+                <!-- T-Shirt Brasil Girls - frente e costas -->
+                <div class="product-card" data-category="tshirt"
+                     data-images='["produtos/produtos novos/T - Shirt Brasil Tam único (76,50).jpeg","produtos/produtos novos/T - Shirt Brasil Tam único (76,50) (1).jpeg"]'
+                     onclick="openModal(this)">
+                    <div class="product-img">
+                        <img src="produtos/produtos novos/T - Shirt Brasil Tam único (76,50).jpeg" alt="T-Shirt Brasil Girls - Frente" loading="lazy">
+                        <span class="product-badge">Novo</span>
+                        <div class="card-thumbs">
+                            <img class="card-thumb active" src="produtos/produtos novos/T - Shirt Brasil Tam único (76,50).jpeg" alt="frente" onclick="event.stopPropagation(); switchCardImg(this)">
+                            <img class="card-thumb" src="produtos/produtos novos/T - Shirt Brasil Tam único (76,50) (1).jpeg" alt="costas" onclick="event.stopPropagation(); switchCardImg(this)">
+                        </div>
+                        <div class="product-overlay">
+                            <a href="#" class="btn-whatsapp" onclick="event.stopPropagation(); event.preventDefault(); openOrderFromCard(this)">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.518-.805-6.242-2.152l-.436-.348-2.684.9.9-2.684-.348-.436A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                                Pedir
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">T-Shirt Brasil Girls</h3>
+                        <div class="product-variants" data-variants='{"ÚNICO":["Off-White"]}' data-colors='[{"name":"Off-White","hex":"#F5F0E8"}]'>
+                            <div class="product-sizes">
+                                <span class="size-tag unique" data-size="ÚNICO">ÚNICO</span>
+                            </div>
+                            <div class="product-colors"></div>
+                        </div>
+                        <p class="product-price">R$ 76,50</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1572,7 +1958,10 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" style="position: relative;">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <img class="modal-img" id="modalImg" src="" alt="">
+            <div class="modal-gallery">
+                <img class="modal-main-img" id="modalImg" src="" alt="">
+                <div class="modal-thumbs" id="modalThumbs"></div>
+            </div>
             <div class="modal-body">
                 <h3 class="modal-name" id="modalName"></h3>
                 <div class="product-variants" id="modalVariants"></div>
@@ -1757,12 +2146,39 @@
         let currentOrderData = {};
 
         function openModal(card) {
-            const img = card.querySelector('.product-img img').src;
+            const imgs = card.querySelectorAll('.product-img img');
+            const mainImg = imgs[0];
+            const allImages = card.dataset.images ? JSON.parse(card.dataset.images) : [mainImg ? mainImg.getAttribute('src') : ''];
             const name = card.querySelector('.product-name').textContent;
             const price = card.querySelector('.product-price').textContent;
             const variantsEl = card.querySelector('.product-variants');
 
-            document.getElementById('modalImg').src = img;
+            const modalImgEl = document.getElementById('modalImg');
+            const modalThumbsEl = document.getElementById('modalThumbs');
+
+            modalImgEl.src = allImages[0];
+            modalImgEl.alt = name;
+
+            modalThumbsEl.innerHTML = '';
+            if (allImages.length > 1) {
+                allImages.forEach((src, i) => {
+                    const t = document.createElement('img');
+                    t.src = src;
+                    t.alt = name + ' foto ' + (i+1);
+                    t.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+                    t.addEventListener('click', () => {
+                        modalImgEl.style.opacity = '0';
+                        setTimeout(() => { modalImgEl.src = src; modalImgEl.style.opacity = '1'; }, 150);
+                        modalThumbsEl.querySelectorAll('.modal-thumb').forEach(th => th.classList.remove('active'));
+                        t.classList.add('active');
+                    });
+                    modalThumbsEl.appendChild(t);
+                });
+                modalThumbsEl.style.display = 'flex';
+            } else {
+                modalThumbsEl.style.display = 'none';
+            }
+
             document.getElementById('modalName').textContent = name;
             document.getElementById('modalPrice').textContent = price;
 
@@ -1777,7 +2193,7 @@
             }
 
             currentOrderData = {
-                img: img,
+                img: allImages[0],
                 name: name,
                 price: price,
                 variants: variantsEl ? variantsEl.dataset.variants : '{}',
@@ -1786,6 +2202,14 @@
 
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        function switchCardImg(thumb) {
+            const productImg = thumb.closest('.product-img');
+            const mainImg = productImg.querySelector('img:not(.card-thumb)');
+            mainImg.src = thumb.src;
+            productImg.querySelectorAll('.card-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
         }
 
         function closeModal() {
@@ -1804,7 +2228,8 @@
 
         function openOrderFromCard(btn) {
             const card = btn.closest('.product-card');
-            const img = card.querySelector('.product-img img').src;
+            const allImages = card.dataset.images ? JSON.parse(card.dataset.images) : [card.querySelector('.product-img img').src];
+            const img = allImages[0];
             const name = card.querySelector('.product-name').textContent;
             const price = card.querySelector('.product-price').textContent;
             const variantsEl = card.querySelector('.product-variants');
